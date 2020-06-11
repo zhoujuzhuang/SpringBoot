@@ -24,7 +24,7 @@
 		<mysql.version>5.1.32</mysql.version>
 		<pageHelper.starter.version>1.2.3</pageHelper.starter.version>
 		
-		<struts2.version>2.3.32</struts2.version>
+		<struts2.version>2.3.34</struts2.version>
 	</properties>
 
 

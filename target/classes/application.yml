@@ -1,0 +1,58 @@
+spring:
+  thymeleaf:
+    cache: false #关闭模板缓存
+ # activemq:
+ #   broker-url: tcp://localhost:61616
+ #   queuename: queuemessage
+ #   topicname: topicmessage
+ # jms:
+  #  pub-sub-domain: true #开启支持topic广播
+  redis: localhost
+  datasource:
+    master: #主数据库
+      publicKey: MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAI3soi0ypSXKV4zNr9NfOZ4v/EDQlzo6gGA9VGfAYYuw2E5eoST4lyu8NliQERQyoZ30hbF+Vmim0oDmjW0WfrMCAwEAAQ==
+      type: com.alibaba.druid.pool.DruidDataSource
+      url: jdbc:mysql://localhost:3306/user1?useUnicode=true&characterEncoding=utf-8&rewriteBatchedStatements=true&autoReconnect=true&failOverReadOnly=false&useSSL=false&allowMultiQueries=true
+      username: root
+      password: En0Qf+dMAShu9dofo3cSPiMyc9wfkcuf1WUU7abnm+40/gSCnSxhPl+KT/OEfMyie25mdqXQ0k+RxrHeHaiDOA==
+      # 配置 connection-properties，启用加密，配置公钥。
+      passwordCallbackClassName: com.kimleysoft.utils.DbPasswordCallback
+      connection-properties: config.decrypt=true;publicKey=${spring.datasource.master.publicKey};password=${spring.datasource.master.password}
+      # 启用ConfigFilter
+      filter:
+        config:
+          enabled: true
+      driverClassName: com.mysql.jdbc.Driver
+    slave1: #从数据库1
+      publicKey: MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAI3soi0ypSXKV4zNr9NfOZ4v/EDQlzo6gGA9VGfAYYuw2E5eoST4lyu8NliQERQyoZ30hbF+Vmim0oDmjW0WfrMCAwEAAQ==
+      type: com.alibaba.druid.pool.DruidDataSource
+      url: jdbc:mysql://localhost:3306/user2?useUnicode=true&characterEncoding=utf-8&rewriteBatchedStatements=true&autoReconnect=true&failOverReadOnly=false&useSSL=false&allowMultiQueries=true
+      username: root   
+      password: En0Qf+dMAShu9dofo3cSPiMyc9wfkcuf1WUU7abnm+40/gSCnSxhPl+KT/OEfMyie25mdqXQ0k+RxrHeHaiDOA==
+      # 配置 connection-properties，启用加密，配置公钥。
+      passwordCallbackClassName: com.kimleysoft.utils.DbPasswordCallback
+      connection-properties: config.decrypt=true;publicKey=${spring.datasource.slave1.publicKey};password=${spring.datasource.slave1.password}
+      # 启用ConfigFilter
+      filter:
+        config:
+          enabled: true
+      driverClassName: com.mysql.jdbc.Driver
+    slave2: #从数据库2
+      publicKey: MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAI3soi0ypSXKV4zNr9NfOZ4v/EDQlzo6gGA9VGfAYYuw2E5eoST4lyu8NliQERQyoZ30hbF+Vmim0oDmjW0WfrMCAwEAAQ==
+      type: com.alibaba.druid.pool.DruidDataSource
+      url: jdbc:mysql://localhost:3306/user3?useUnicode=true&characterEncoding=utf-8&rewriteBatchedStatements=true&autoReconnect=true&failOverReadOnly=false&useSSL=false&allowMultiQueries=true
+      username: root   
+      password: En0Qf+dMAShu9dofo3cSPiMyc9wfkcuf1WUU7abnm+40/gSCnSxhPl+KT/OEfMyie25mdqXQ0k+RxrHeHaiDOA==
+      # 配置 connection-properties，启用加密，配置公钥。
+      passwordCallbackClassName: com.kimleysoft.utils.DbPasswordCallback
+      connection-properties: config.decrypt=true;publicKey=${spring.datasource.slave2.publicKey};password=${spring.datasource.slave2.password}
+      # 启用ConfigFilter
+      filter:
+        config:
+          enabled: true
+      driverClassName: com.mysql.jdbc.Driver
+mybatis:
+  type-aliases-package: com.kimleysoft.entity
+  mapper-locations: classpath*:mappers/*.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

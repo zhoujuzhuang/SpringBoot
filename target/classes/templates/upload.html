@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="js/jquery-1.11.0.min.js" type="text/javascript"></script>
+<script src="js/jquery.form.js" type="text/javascript"></script>
+</head>
+<body>
+	<form method="post" enctype="multipart/form-data" id="form1">
+		<input id="file" type="file" name="files" multiple="multiple">
+		                            
+		<!--注意点：要多选文件要用multiple="multiple"-->
+		<input type="button" onclick="uploadTrainProduct()" value="提交">
+
+	</form>
+	<script type="text/javascript">
+/* function uploadTrainProduct(){
+    var formData = new FormData($("#form1")[0]);  //重点：要用这种方法接收表单的参数
+    $.ajax({
+        url : "/upload",
+        type : 'POST',
+        data : formData,
+        // 告诉jQuery不要去处理发送的数据
+        processData : false,                 
+        // 告诉jQuery不要去设置Content-Type请求头
+        contentType : false,
+        async : false,
+        success : function(data) {
+            if(data){
+            	alert(data)
+            }
+        },error: function(error){
+        	alert(error)
+        }
+    });
+} */
+function uploadTrainProduct(){
+	$("#form1").ajaxSubmit({
+		type : "POST",
+		url : "upload",
+		contentType : false,
+		processData : false,
+		success : function(data) {
+			var li = eval(data);
+			alert(li);
+			if (li != 0) {
+				alert("成功");
+			}
+		}
+	})
+}
+</script>
+</body>
+</html>

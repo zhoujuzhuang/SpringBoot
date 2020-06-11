@@ -1,0 +1,16 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="RpcServer:war exploded">
+    <output-path>F:/99bin/rpcserver</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="RpcServer" />
+        </element>
+      </element>
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="F:/99bin/rpcserver/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="javaee-facet-resources" facet="RpcServer/web/Web" />
+    </root>
+  </artifact>
+</component>

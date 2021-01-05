@@ -32,7 +32,7 @@ public class UserService {
 	@RedisCache()
 	public Map<String,List<User>> getUserMap(User record){
 		 List<User> userList = userMapper.select(record);
-		 Map<String, List<User>> map = new HashMap<String,List<User>>();
+		 Map<String, List<User>> map = new HashMap<>();
 		 map.put("userList", userList);
 		 return map;
 	}

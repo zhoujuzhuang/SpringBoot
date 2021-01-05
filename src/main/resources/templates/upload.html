@@ -50,6 +50,21 @@ function uploadTrainProduct(){
 		}
 	})
 }
+
+$(function(){
+	$.ajax({
+        url : "http://localhost:10010/user-service/user/1",
+        type : 'GET',
+        success : function(data) {
+            if(data){
+            	alert(data)
+            }
+        },error: function(error){
+        	alert(error)
+        }
+    });
+	
+})
 </script>
 </body>
 </html>
